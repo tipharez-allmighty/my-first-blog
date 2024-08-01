@@ -1,0 +1,70 @@
+.page-header {
+    background-color: #FF77FF; /* Bright pink */
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #00FFFF; /* Bright cyan */
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #FF69B4; /* Hot pink */
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea,
+.post-form input {
+    width: 100%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+    color: #00FFFF; /* Bright cyan */
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+    color: #9400D3; /* Dark violet */
+}
+
+.post > .date,
+.post > .actions {
+    float: right;
+}
+
+.btn-secondary,
+.btn-secondary:visited {
+    color: #FF77FF; /* Bright pink */
+    background: none;
+    border-color: #9400D3; /* Dark violet */
+}
+
+.btn-secondary:hover {
+    color: #FFFFFF;
+    background-color: #9400D3; /* Dark violet */
+}
