@@ -68,3 +68,21 @@ h4 {
     color: #FFFFFF;
     background-color: #9400D3; /* Dark violet */
 }
+
+.btn-default {
+    background-color: pink;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-default:hover {
+    background-color: #ff66b2;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
