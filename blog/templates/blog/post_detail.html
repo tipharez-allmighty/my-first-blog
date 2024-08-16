@@ -11,21 +11,49 @@
         <h2>{{ post.title }}</h2>
                 <aside class="actions">
             {% if user.is_authenticated %}
+        <div class="button-container">
             <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
                 {% include './icons/pencil-fill.svg' %}
             </a>
+            <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">
+            {% include './icons/plus-square.svg' %}</a>
+        </div>
             {% endif %}
         </aside>
         <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.document.all %}
+    <ul>
+        {% for document in post.document.all %}
+            <li><a href="{{ document.document.url }}" download>{{ document.document.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No documents available.</p>
+{% endif %}
     </article>
     <hr>
-<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-{% for comment in post.comments.all %}
+
+    {% for comment in post.comments.all %}
     <div class="comment">
-        <div class="date">{{ comment.created_date }}</div>
+        <p>Likes: {{ comment.num_likes }}</p>
+        <div class="date">
+            {{ comment.created_date }}
+        </div>
         <strong>{{ comment.author }}</strong>
         <p>{{ comment.text|linebreaks }}</p>
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'comment_like' pk=comment.pk %}">
+                {% include './icons/heart-fill.svg' %}
+            </a>
 
+            {% if user == post.author or user == comment.author or user.is_staff %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">
+                    {% include './icons/hand-thumbs-down.svg' %}
+                </a>
+            {% endif %}
+        {% else %}
+            <p>Please <a href="{% url 'users:login' %}">log in</a> to leave comments.</p>
+        {% endif %}
     </div>
 {% empty %}
     <p>No comments here yet :(</p>
